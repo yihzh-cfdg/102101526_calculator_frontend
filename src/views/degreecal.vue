@@ -109,9 +109,9 @@
             ></el-input>
           </el-form-item>
           <el-form-item label="时长(年)">
-            <template v-if="form.type2 == false">
+            <template v-if="form.type1 == '存款'">
               <el-select
-                v-if="form.type1 == '存款'"
+                v-if="form.type2 == false"
                 value-key="dno"
                 v-model="form.choose1"
                 placeholder="请选择"
@@ -124,12 +124,16 @@
                   v-show="item.realtime !== 0"
                 ></el-option>
               </el-select>
-              <el-select
-                v-if="form.type1 == '贷款'"
-                value-key="lno"
-                v-model="form.choose2"
-                placeholder="请选择"
-              >
+              <template v-if="form.type2 == true">
+                <el-input
+                  v-model="form.freetime"
+                  placeholder="请输入年数"
+                  onkeyup="this.value=this.value.match(/\d+\.?\d{0,2}/);this.dispatchEvent(new Event('input'))"
+                ></el-input>
+              </template>
+            </template>
+            <template v-if="form.type1 == '贷款'">
+              <el-select value-key="lno" v-model="form.choose2" placeholder="请选择">
                 <el-option
                   v-for="item in tableData2"
                   :key="item.lno"
@@ -137,13 +141,6 @@
                   :value="item"
                 ></el-option>
               </el-select>
-            </template>
-            <template v-if="form.type2 == true">
-              <el-input
-                v-model="form.freetime"
-                placeholder="请输入年数"
-                onkeyup="this.value=this.value.match(/\d+\.?\d{0,2}/);this.dispatchEvent(new Event('input'))"
-              ></el-input>
             </template>
           </el-form-item>
           <el-form-item>
@@ -286,7 +283,7 @@ export default {
           .then((response) => {
             console.log(response);
             this.activeloan = -1;
-            this.getDepo();
+            this.getLoan();
           })
           .catch((error) => {
             console.error("Set error", error);
@@ -298,7 +295,7 @@ export default {
           .then((response) => {
             console.log(response);
             this.activeloan = -1;
-            this.getDepo();
+            this.getLoan();
           })
           .catch((error) => {
             console.error("Set error", error);
@@ -311,9 +308,7 @@ export default {
         .post("http://127.0.0.1:8083/api/rate/delDeposit", this.tableData1[index])
         .then((response) => {
           console.log(response);
-          setTimeout(() => {
-            this.getLoan();
-          }, 100);
+          this.getDepo();
         })
         .catch((error) => {
           console.error("Delete error", error);
@@ -325,22 +320,20 @@ export default {
         .post("http://127.0.0.1:8083/api/rate/delLoan", this.tableData2[index])
         .then((response) => {
           console.log(response);
-          setTimeout(() => {
-            this.getLoan();
-          }, 100);
+          this.getLoan();
         })
         .catch((error) => {
           console.error("Delete error", error);
         });
     },
-    handleLoanAdd() {
-      this.tableData2.push({ lno: 0, month: "", rate: 0, realtime: 0 });
-      this.activeloan = 0;
-    },
     handleDepoAdd() {
       this.tableData1.push({ dno: 0, month: "", rate: 0, realtime: 0 });
       this.activedepo = 0;
       0;
+    },
+    handleLoanAdd() {
+      this.tableData2.push({ lno: 0, month: "", rate: 0, realtime: 0 });
+      this.activeloan = 0;
     },
   },
 };

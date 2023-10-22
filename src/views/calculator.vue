@@ -22,83 +22,226 @@
           </div>
           <div>
             <el-row class="keys">
-              <el-button class="shift" @click="onShiftClick">shift</el-button>
-              <el-button id="pi" class="func" @click="clickHandler($event)">π</el-button>
-              <el-button class="func" @click="getAns">ANS</el-button>
+              <el-button :disabled="isDisabled" class="shift" @click="onShiftClick">
+                shift
+              </el-button>
+              <el-button :disabled="isDisabled" id="pi" class="func" @click="clickHandler($event)">
+                π
+              </el-button>
+              <el-button :disabled="isDisabled" class="func" @click="getAns">ANS</el-button>
               <el-button id="ce" class="func" @click="clickHandler($event)">CE</el-button>
-              <el-button id="del" class="func" @click="clickHandler($event)">←</el-button>
+              <el-button :disabled="isDisabled" id="del" class="func" @click="clickHandler($event)">
+                ←
+              </el-button>
             </el-row>
             <el-row class="keys">
               <template v-if="shift == false">
-                <el-button id="x2" class="func" @click="clickHandler($event)">x²</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="x2"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  x²
+                </el-button>
               </template>
               <template v-else>
-                <el-button id="sin" class="func" @click="clickHandler($event)">sin</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="sin"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  sin
+                </el-button>
               </template>
-              <el-button id="1/x" class="func" @click="clickHandler($event)">1/x</el-button>
-              <el-button id="abs" class="func" @click="clickHandler($event)">|x|</el-button>
-              <el-button id="exp" class="func" @click="clickHandler($event)">exp</el-button>
-              <el-button id="%" class="func" @click="clickHandler($event)">mod</el-button>
+              <el-button :disabled="isDisabled" id="1/x" class="func" @click="clickHandler($event)">
+                1/x
+              </el-button>
+              <el-button :disabled="isDisabled" id="abs" class="func" @click="clickHandler($event)">
+                |x|
+              </el-button>
+              <el-button :disabled="isDisabled" id="exp" class="func" @click="clickHandler($event)">
+                exp
+              </el-button>
+              <el-button :disabled="isDisabled" id="%" class="func" @click="clickHandler($event)">
+                mod
+              </el-button>
             </el-row>
             <el-row class="keys">
               <template v-if="shift == false">
-                <el-button id="sqrt" class="func" @click="clickHandler($event)">√</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="sqrt"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  √
+                </el-button>
               </template>
               <template v-else>
-                <el-button id="cos" class="func" @click="clickHandler($event)">cos</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="cos"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  cos
+                </el-button>
               </template>
-              <el-button id="(" class="func" @click="clickHandler($event)">(</el-button>
-              <el-button id=")" class="func" @click="clickHandler($event)">)</el-button>
-              <el-button id="fact" class="func" @click="clickHandler($event)">x!</el-button>
-              <el-button id="/" class="func" @click="clickHandler($event)">÷</el-button>
+              <el-button :disabled="isDisabled" id="(" class="func" @click="clickHandler($event)">
+                (
+              </el-button>
+              <el-button :disabled="isDisabled" id=")" class="func" @click="clickHandler($event)">
+                )
+              </el-button>
+              <el-button
+                :disabled="isDisabled"
+                id="fact"
+                class="func"
+                @click="clickHandler($event)"
+              >
+                x!
+              </el-button>
+              <el-button :disabled="isDisabled" id="/" class="func" @click="clickHandler($event)">
+                ÷
+              </el-button>
             </el-row>
             <el-row class="keys">
               <template v-if="shift == false">
-                <el-button id="rand" class="func" @click="clickHandler($event)">rand</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="rand"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  rand
+                </el-button>
               </template>
               <template v-else>
-                <el-button id="tan" class="func" @click="clickHandler($event)">tan</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="tan"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  tan
+                </el-button>
               </template>
-              <el-button id="7" class="num" @click="clickHandler($event)">7</el-button>
-              <el-button id="8" class="num" @click="clickHandler($event)">8</el-button>
-              <el-button id="9" class="num" @click="clickHandler($event)">9</el-button>
-              <el-button id="*" class="func" @click="clickHandler($event)">&times;</el-button>
+              <el-button :disabled="isDisabled" id="7" class="num" @click="clickHandler($event)">
+                7
+              </el-button>
+              <el-button :disabled="isDisabled" id="8" class="num" @click="clickHandler($event)">
+                8
+              </el-button>
+              <el-button :disabled="isDisabled" id="9" class="num" @click="clickHandler($event)">
+                9
+              </el-button>
+              <el-button :disabled="isDisabled" id="*" class="func" @click="clickHandler($event)">
+                &times;
+              </el-button>
             </el-row>
             <el-row class="keys">
               <template v-if="shift == false">
-                <el-button id="10x" class="func" @click="clickHandler($event)">10^x</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="10x"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  10^x
+                </el-button>
               </template>
               <template v-else>
-                <el-button id="asin" class="func" @click="clickHandler($event)">arcsin</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="asin"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  arcsin
+                </el-button>
               </template>
-              <el-button id="4" class="num" @click="clickHandler($event)">4</el-button>
-              <el-button id="5" class="num" @click="clickHandler($event)">5</el-button>
-              <el-button id="6" class="num" @click="clickHandler($event)">6</el-button>
-              <el-button id="-" class="func" @click="clickHandler($event)">-</el-button>
+              <el-button :disabled="isDisabled" id="4" class="num" @click="clickHandler($event)">
+                4
+              </el-button>
+              <el-button :disabled="isDisabled" id="5" class="num" @click="clickHandler($event)">
+                5
+              </el-button>
+              <el-button :disabled="isDisabled" id="6" class="num" @click="clickHandler($event)">
+                6
+              </el-button>
+              <el-button :disabled="isDisabled" id="-" class="func" @click="clickHandler($event)">
+                -
+              </el-button>
             </el-row>
             <el-row class="keys">
               <template v-if="shift == false">
-                <el-button id="log" class="func" @click="clickHandler($event)">log</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="log"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  log
+                </el-button>
               </template>
               <template v-else>
-                <el-button id="acos" class="func" @click="clickHandler($event)">arccos</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="acos"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  arccos
+                </el-button>
               </template>
-              <el-button id="1" class="num" @click="clickHandler($event)">1</el-button>
-              <el-button id="2" class="num" @click="clickHandler($event)">2</el-button>
-              <el-button id="3" class="num" @click="clickHandler($event)">3</el-button>
-              <el-button id="+" class="func" @click="clickHandler($event)">+</el-button>
+              <el-button :disabled="isDisabled" id="1" class="num" @click="clickHandler($event)">
+                1
+              </el-button>
+              <el-button :disabled="isDisabled" id="2" class="num" @click="clickHandler($event)">
+                2
+              </el-button>
+              <el-button :disabled="isDisabled" id="3" class="num" @click="clickHandler($event)">
+                3
+              </el-button>
+              <el-button :disabled="isDisabled" id="+" class="func" @click="clickHandler($event)">
+                +
+              </el-button>
             </el-row>
             <el-row class="keys">
               <template v-if="shift == false">
-                <el-button id="ln" class="func" @click="clickHandler($event)">ln</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="ln"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  ln
+                </el-button>
               </template>
               <template v-else>
-                <el-button id="atan" class="func" @click="clickHandler($event)">arctan</el-button>
+                <el-button
+                  :disabled="isDisabled"
+                  id="atan"
+                  class="func"
+                  @click="clickHandler($event)"
+                >
+                  arctan
+                </el-button>
               </template>
-              <el-button id="inv" class="num" @click="clickHandler($event)">+/-</el-button>
-              <el-button id="0" class="num" @click="clickHandler($event)">0</el-button>
-              <el-button id="." class="num" @click="clickHandler($event)">.</el-button>
-              <el-button id="=" class="equ" @click="clickHandler($event)">=</el-button>
+              <el-button :disabled="isDisabled" id="inv" class="num" @click="clickHandler($event)">
+                +/-
+              </el-button>
+              <el-button :disabled="isDisabled" id="0" class="num" @click="clickHandler($event)">
+                0
+              </el-button>
+              <el-button :disabled="isDisabled" id="." class="num" @click="clickHandler($event)">
+                .
+              </el-button>
+              <el-button :disabled="isDisabled" id="=" class="equ" @click="clickHandler($event)">
+                =
+              </el-button>
             </el-row>
           </div>
         </div>
@@ -261,6 +404,7 @@ export default {
         try {
           that.currentVal = eval(this.new_exp);
         } catch (error) {
+          this.errorHandler(error);
           return;
         }
       } else if (that.isSym(button_text)) {
@@ -277,22 +421,26 @@ export default {
           if (that.isEmpty()) that.old_exp = "0";
           else that.old_exp += that.new_exp;
           that.new_exp = "";
-          try {
-            that.lastVal = that.currentVal;
-            that.currentVal = eval(that.old_exp);
-          } catch (error) {
-            return;
-          }
+          if (!this.bracket)
+            try {
+              that.lastVal = that.currentVal;
+              that.currentVal = eval(that.old_exp);
+            } catch (error) {
+              this.errorHandler("等式错误");
+              return;
+            }
           that.old_exp += button_text;
           that.changeOp = true;
         }
       } else if (button_text === "=") {
+        if (that.bracket != 0) this.errorHandler("括号不匹配");
         if (!that.noPrev) {
           that.old_exp = that.currentVal.toString();
           that.old_exp += that.holdVal;
           try {
             that.currentVal = eval(that.old_exp);
           } catch (error) {
+            this.errorHandler("等式错误");
             return;
           }
           that.old_exp += "=";
@@ -304,6 +452,7 @@ export default {
           try {
             that.currentVal = eval(that.old_exp);
           } catch (error) {
+            this.errorHandler("等式错误");
             return;
           }
           that.holdVal += that.currentVal.toString();
@@ -321,29 +470,13 @@ export default {
           try {
             that.currentVal = eval(that.old_exp);
           } catch (error) {
+            this.errorHandler(error);
             return;
           }
           that.old_exp += "=";
         }
         that.setHistory(that.old_exp + that.currentVal);
-      } else if (target.className === "el-button func el-button--default") {
-        that.funcHandler(button_text);
-      } else if (button_text == "(" || button_text == ")") {
-        that.old_exp += button_text;
-      }
-    },
-    getAns() {
-      let that = this;
-      let pattern = "/(?<==)[0-9.-]+/";
-      if (that.tableData.length > 0) {
-        that.currentVal = that.tableData[0].exps.match(pattern);
-        that.inv = that.currentVal < 0;
-        that.new_exp = that.currentVal.toString();
-      }
-    },
-    funcHandler(button_text) {
-      let that = this;
-      if (button_text == "+/-" && that.currentVal != 0) {
+      } else if (button_text == "inv" && that.currentVal != 0) {
         that.currentVal = -that.currentVal;
         if (that.inv == false) {
           that.new_exp = "-" + that.new_exp;
@@ -352,8 +485,41 @@ export default {
           that.new_exp = that.new_exp.substring(1);
           that.inv = false;
         }
-      } else if (button_text == "ce") {
+      } else if (button_text == ".") {
+        if (!that.dot) {
+          if (that.currentVal == 0) that.new_exp = "0";
+          that.dot = true;
+          that.new_exp += ".";
+          that.currentVal = that.new_exp;
+        }
+      } else if (target.className === "el-button func el-button--default") {
+        that.funcHandler(button_text);
+      }
+    },
+    getAns() {
+      let that = this;
+      let pattern = /(?<==)[0-9.-]+/;
+      if (that.tableData.length > 0) {
+        that.currentVal = eval(that.tableData[0].exps.match(pattern)[0]);
+        that.inv = that.currentVal < 0;
+        that.new_exp = that.currentVal.toString();
+      }
+    },
+    funcHandler(button_text) {
+      let that = this;
+      if (button_text == "ce") {
         that.remake();
+      } else if (button_text == "(") {
+        that.bracket++;
+        that.old_exp += button_text;
+      } else if (button_text == ")") {
+        that.bracket--;
+        if (that.bracket == 0) {
+          this.old_exp += this.new_exp + ")";
+          this.new_exp = "";
+          this.clickHandler("=");
+        }
+        that.old_exp += button_text;
       } else if (button_text == "del") {
         if (!that.noPrev) return;
         if (!that.isEmpty()) {
@@ -365,14 +531,9 @@ export default {
           try {
             that.currentVal = eval(that.new_exp);
           } catch (error) {
-            console.out(error);
+            this.errorHandler(error);
             return;
           }
-      } else if (button_text == ".") {
-        if (!that.dot) {
-          that.dot = true;
-          that.new_exp += ".";
-        }
       } else if (button_text == "x2") {
         that.currentVal = (that.currentVal * that.currentVal).toFixed(8);
         that.new_exp = that.currentVal.toString();
@@ -382,6 +543,10 @@ export default {
         that.new_exp = that.currentVal.toString();
         if (that.changeOp) that.changeOp = false;
       } else if (button_text == "1/x") {
+        if (that.currentVal == 0) {
+          this.errorHandler("不能除以0");
+          return;
+        }
         that.currentVal = (1 / that.currentVal).toFixed(8);
         that.new_exp = that.currentVal.toString();
       } else if (button_text == "abs") {
@@ -392,17 +557,19 @@ export default {
         that.currentVal = Math.exp(that.currentVal).toFixed(8);
         that.new_exp = that.currentVal.toString();
       } else if (button_text == "sqrt") {
-        try {
-          that.currentVal = Math.sqrt(that.currentVal).toFixed(8);
-        } catch (error) {
-          console.out(error);
+        if (this.currentVal < 0) {
+          this.errorHandler("无定义");
           return;
         }
+        that.currentVal = Math.sqrt(that.currentVal).toFixed(8);
         that.new_exp = that.currentVal.toString();
       } else if (button_text == "fact") {
         if (that.currentVal >= 0 && that.currentVal <= 20)
-          that.currentVal = fact[parseInt(that.currentVal)];
-        else that.currentVal = 1 / 0;
+          that.currentVal = this.fact[parseInt(that.currentVal)];
+        else {
+          this.errorHandler("数值溢出");
+          return;
+        }
         that.new_exp = that.currentVal.toString();
       } else if (button_text == "rand") {
         that.currentVal = Math.random().toFixed(8);
@@ -416,30 +583,44 @@ export default {
           that.currentVal = Math.log10(that.currentVal).toFixed(8);
           that.new_exp = that.currentVal.toString();
           that.inv = that.currentVal < 0;
+        } else {
+          this.errorHandler("无定义");
+          return;
         }
       } else if (button_text == "ln") {
         if (that.currentVal > 0) {
           that.currentVal = Math.log(that.currentVal).toFixed(8);
           that.new_exp = that.currentVal.toString();
           that.inv = that.currentVal < 0;
+        } else {
+          this.errorHandler("无定义");
+          return;
         }
       } else if (button_text == "sin") {
-        that.currentVal = Math.sin(degToRad(that.currentVal)).toFixed(8);
+        that.currentVal = Math.sin(this.degToRad(that.currentVal)).toFixed(8);
         that.new_exp = that.currentVal.toString();
         that.inv = that.currentVal < 0;
       } else if (button_text == "cos") {
-        that.currentVal = Math.cos(degToRad(that.currentVal)).toFixed(8);
+        that.currentVal = Math.cos(this.degToRad(that.currentVal)).toFixed(8);
         that.new_exp = that.currentVal.toString();
         that.inv = that.currentVal < 0;
       } else if (button_text == "tan") {
-        that.currentVal = Math.tan(degToRad(that.currentVal)).toFixed(8);
+        that.currentVal = Math.tan(this.degToRad(that.currentVal)).toFixed(8);
         that.new_exp = that.currentVal.toString();
         that.inv = that.currentVal < 0;
       } else if (button_text == "asin") {
+        if (this.currentVal > 1 || this.currentVal < -1) {
+          this.errorHandler("无定义");
+          return;
+        }
         that.currentVal = Math.asin(that.currentVal).toFixed(8);
         that.new_exp = that.currentVal.toString();
         that.inv = that.currentVal < 0;
       } else if (button_text == "acos") {
+        if (this.currentVal > 1 || this.currentVal < -1) {
+          this.errorHandler("无定义");
+          return;
+        }
         that.currentVal = Math.acos(that.currentVal).toFixed(8);
         that.new_exp = that.currentVal.toString();
         that.inv = that.currentVal < 0;
@@ -448,6 +629,10 @@ export default {
         that.new_exp = that.currentVal.toString();
         that.inv = that.currentVal < 0;
       }
+    },
+    errorHandler(e) {
+      this.currentVal = "错误：" + e;
+      this.isDisabled = true;
     },
     onShiftClick() {
       this.shift = !this.shift;
@@ -480,14 +665,16 @@ export default {
       that.holdVal = "";
       that.currentVal = 0;
       that.lastVal = 0;
-      that.shift = false;
       that.dot = false;
       that.changeOp = false;
       that.inv = false;
       that.noPrev = true;
+      that.bracket = 0;
+      that.isDisabled = false;
     },
     isNum(val) {
-      return parseFloat(val).toString() != "NaN";
+      let pattern = /^[0-9]*$/;
+      return pattern.test(val);
     },
     isSym(val) {
       return ["+", "-", "*", "/", "%"].indexOf(val) != -1;
@@ -511,6 +698,8 @@ export default {
       changeOp: false,
       inv: false,
       noPrev: true,
+      bracket: 0,
+      isDisabled: false,
       tableData: [],
       fact: [
         1.0, 1.0, 2.0, 6.0, 24.0, 120.0, 720.0, 5040.0, 40320.0, 362880.0, 3628800.0, 39916800.0,
