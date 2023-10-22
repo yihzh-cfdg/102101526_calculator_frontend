@@ -639,7 +639,7 @@ export default {
     },
     setHistory(history) {
       axios
-        .post("http://127.0.0.1:8083/api/cal/setHistory", { exps: history })
+        .post("/api/cal/setHistory", { exps: history })
         .then((response) => {
           console.log(response);
           this.getHistory();
@@ -650,7 +650,7 @@ export default {
     },
     getHistory() {
       axios
-        .get("http://127.0.0.1:8083/api/cal/getHistory")
+        .get("/api/cal/getHistory")
         .then((response) => {
           this.tableData = response.data.data;
         })

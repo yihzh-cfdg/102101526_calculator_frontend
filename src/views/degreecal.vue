@@ -224,7 +224,7 @@ export default {
     },
     getDepo() {
       axios
-        .get("http://127.0.0.1:8083/api/rate/getDeposit")
+        .get("/api/rate/getDeposit")
         .then((response) => {
           this.tableData1 = response.data.data;
           if (this.tableData1.length > 0) this.form.choose1 = this.tableData1[0];
@@ -235,7 +235,7 @@ export default {
     },
     getLoan() {
       axios
-        .get("http://127.0.0.1:8083/api/rate/getLoan")
+        .get("/api/rate/getLoan")
         .then((response) => {
           this.tableData2 = response.data.data;
           if (this.tableData2.length > 0) this.form.choose2 = this.tableData2[0];
@@ -254,7 +254,7 @@ export default {
       console.log(index, row);
       if (row.dno == 0) {
         axios
-          .post("http://127.0.0.1:8083/api/rate/insertDeposit", this.tableData1[index])
+          .post("/api/rate/insertDeposit", this.tableData1[index])
           .then((response) => {
             console.log(response);
             this.activedepo = -1;
@@ -265,7 +265,7 @@ export default {
           });
       } else {
         axios
-          .post("http://127.0.0.1:8083/api/rate/updateDeposit", this.tableData1[index])
+          .post("/api/rate/updateDeposit", this.tableData1[index])
           .then((response) => {
             console.log(response);
             this.activedepo = -1;
@@ -279,7 +279,7 @@ export default {
     handleLoanEdit(index, row) {
       if (row.lno == 0) {
         axios
-          .post("http://127.0.0.1:8083/api/rate/insertLoan", this.tableData1[index])
+          .post("/api/rate/insertLoan", this.tableData1[index])
           .then((response) => {
             console.log(response);
             this.activeloan = -1;
@@ -291,7 +291,7 @@ export default {
       } else {
         console.log(index, row);
         axios
-          .post("http://127.0.0.1:8083/api/rate/insertLoan", this.tableData2[index])
+          .post("/api/rate/insertLoan", this.tableData2[index])
           .then((response) => {
             console.log(response);
             this.activeloan = -1;
@@ -305,7 +305,7 @@ export default {
     handleDepoDelete(index, row) {
       console.log(index, row);
       axios
-        .post("http://127.0.0.1:8083/api/rate/delDeposit", this.tableData1[index])
+        .post("/api/rate/delDeposit", this.tableData1[index])
         .then((response) => {
           console.log(response);
           this.getDepo();
@@ -317,7 +317,7 @@ export default {
     handleLoanDelete(index, row) {
       console.log(index, row);
       axios
-        .post("http://127.0.0.1:8083/api/rate/delLoan", this.tableData2[index])
+        .post("/api/rate/delLoan", this.tableData2[index])
         .then((response) => {
           console.log(response);
           this.getLoan();
