@@ -5,9 +5,8 @@ module.exports = defineConfig({
     // 以后以/api打头的请求都走代理
     proxy: {
       '/api': {
-        target: 'http://localhost:8082/api',
-        changeOrigin: true,
-        ws: false
+        target: 'http://47.110.148.166:8083/api',
+        changeOrigin: true
       }
     }
   }
