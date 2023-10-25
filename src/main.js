@@ -8,7 +8,7 @@ import store from "./store";
 import App from "./App.vue";
 import router from "./router";
 Vue.use(ElementUI);
-axios.defaults.baseURL = "http://47.110.148.166";
+axios.defaults.baseURL = "http://47.110.148.166:8083";
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
